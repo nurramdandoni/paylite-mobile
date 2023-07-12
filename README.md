@@ -1,2 +1,2 @@
 # paylite-mobile
-Paylite Mobile Apps - React Native
+Paylite Mobile Apps - Native Android with Kotlin
