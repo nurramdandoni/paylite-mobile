@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         val signInButton = findViewById<Button>(R.id.btn_login_google)
         signInButton.setOnClickListener {
-//            signOut()
+            signOut()
             signIn()
         }
 
@@ -131,6 +131,11 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("email", email)
             intent.putExtra("fullName", fullName)
             intent.putExtra("profilePicture", profilePicture.toString())
+
+            runOnUiThread {
+                Toast.makeText(this, "Login Berhasil!.", Toast.LENGTH_SHORT).show()
+            }
+
             startActivity(intent)
             finish() // Opsional, jika Anda ingin menutup aktivitas saat kembali dari `DashboardActivity`
         } catch (e: ApiException) {

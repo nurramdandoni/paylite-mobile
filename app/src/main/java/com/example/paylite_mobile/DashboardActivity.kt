@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.paylite_mobile.helper.Constant
 import com.example.paylite_mobile.helper.PreferenceHelper
@@ -55,6 +56,11 @@ class DashboardActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
         intent.putExtra("signOut", true)
+
+        runOnUiThread {
+            Toast.makeText(this, "Logout Berhasil!.", Toast.LENGTH_SHORT).show()
+        }
+
         startActivity(intent)
         finish()
     }
