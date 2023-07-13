@@ -6,7 +6,7 @@
     </style>
 
     <style name="tos" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">9sp</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 

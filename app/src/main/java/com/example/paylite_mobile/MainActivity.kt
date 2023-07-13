@@ -54,12 +54,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Teks "Terms of Service" dan "Privacy Policy"
-        val termsOfServiceText = "Terms of Service"
-        val privacyPolicyText = "Privacy Policy"
+        val termsOfServiceText = "Syarat dan Ketentuan Layanan"
+        val privacyPolicyText = "Kebijakan Privasi"
         val textViewTermsPrivacy = findViewById<TextView>(R.id.textView_terms_privacy)
 
         // Membuat teks HTML dengan link untuk "Terms of Service" dan "Privacy Policy"
-        val combinedText = "By signing up, you agree to our <a href='https://paylite.co.id/tos'>$termsOfServiceText</a> and acknowledge that our <a href='https://paylite.co.id/policy'>$privacyPolicyText</a> applies to you"
+        val combinedText = "Dengan Masuk, Anda setuju dengan <a href='https://paylite.co.id/tos'>$termsOfServiceText</a> kami dan mengakui bahwa <a href='https://paylite.co.id/policy'>$privacyPolicyText</a> kami berlaku untuk Anda."
 
         val spannableCombinedText = SpannableString(HtmlCompat.fromHtml(combinedText, HtmlCompat.FROM_HTML_MODE_LEGACY))
 
