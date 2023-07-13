@@ -28,11 +28,11 @@
 
         <Button
             android:id="@+id/btn_login_google"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="55dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/button_login"
-            android:drawableLeft="@mipmap/ic_google"
+            android:drawableLeft="@drawable/button_icon_google_login"
+            android:paddingStart="0dp"
             android:text="Login dengan Google"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
