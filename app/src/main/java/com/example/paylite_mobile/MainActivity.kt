@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import android.widget.VideoView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        val signInButton = findViewById<SignInButton>(R.id.btn_login_google)
+        val signInButton = findViewById<Button>(R.id.btn_login_google)
         signInButton.setOnClickListener {
             signOut()
             signIn()
