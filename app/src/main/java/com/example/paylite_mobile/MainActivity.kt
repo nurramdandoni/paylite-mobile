@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.SyncStateContract.Constants
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
@@ -17,6 +18,8 @@ import android.widget.Toast
 import android.widget.VideoView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import com.example.paylite_mobile.helper.Constant
+import com.example.paylite_mobile.helper.PreferenceHelper
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -29,10 +32,14 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN = 123
+    private lateinit var sharedpref: PreferenceHelper
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        sharedpref = PreferenceHelper(this)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
@@ -42,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         val signInButton = findViewById<Button>(R.id.btn_login_google)
         signInButton.setOnClickListener {
-            signOut()
+//            signOut()
             signIn()
         }
 
@@ -70,6 +77,15 @@ class MainActivity : AppCompatActivity() {
         textViewTermsPrivacy.text = spannableCombinedText
         textViewTermsPrivacy.movementMethod = LinkMovementMethod.getInstance()
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (sharedpref.getBoolean(Constant.PREF_IS_LOGIN)){
+            Log.d("Ini Shared Pref", "Email:"+ sharedpref.getString(Constant.PREF_EMAIL))
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onBackPressed() {
@@ -100,6 +116,10 @@ class MainActivity : AppCompatActivity() {
             val profilePicture = account?.photoUrl
 
             // Tampilkan informasi akun di log
+            sharedpref.setBoolean(Constant.PREF_IS_LOGIN,true)
+            sharedpref.setString(Constant.PREF_EMAIL,email.toString())
+            sharedpref.setString(Constant.PREF_NAME,fullName.toString())
+            sharedpref.setString(Constant.PREF_PICTURE,profilePicture.toString())
             Log.d("Data Account", "Email: $email")
             Log.d("Data Account", "Full Name: $fullName")
             Log.d("Data Account", "Profile Picture: $profilePicture")
