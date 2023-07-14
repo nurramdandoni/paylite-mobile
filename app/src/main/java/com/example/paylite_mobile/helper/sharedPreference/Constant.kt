@@ -1,4 +1,4 @@
-package com.example.paylite_mobile.helper
+package com.example.paylite_mobile.helper.sharedPreference
 
 class Constant {
     companion object{

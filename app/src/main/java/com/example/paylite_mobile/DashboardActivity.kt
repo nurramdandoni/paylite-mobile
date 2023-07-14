@@ -8,9 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.example.paylite_mobile.helper.Constant
-import com.example.paylite_mobile.helper.PreferenceHelper
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.example.paylite_mobile.helper.sharedPreference.Constant
+import com.example.paylite_mobile.helper.sharedPreference.PreferenceHelper
 
 class DashboardActivity : AppCompatActivity() {
     private lateinit var sharedpref: PreferenceHelper
@@ -62,11 +61,6 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         startActivity(intent)
-        finish()
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
         finish()
     }
 

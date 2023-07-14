@@ -1,30 +1,25 @@
 package com.example.paylite_mobile
 
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.SyncStateContract.Constants
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.VideoView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
-import com.example.paylite_mobile.helper.Constant
-import com.example.paylite_mobile.helper.PreferenceHelper
+import com.example.paylite_mobile.helper.sharedPreference.Constant
+import com.example.paylite_mobile.helper.sharedPreference.PreferenceHelper
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 
@@ -85,6 +80,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("Ini Shared Pref", "Email:"+ sharedpref.getString(Constant.PREF_EMAIL))
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
