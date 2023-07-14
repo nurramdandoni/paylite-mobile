@@ -5,4 +5,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="paylite_original">#15A8E5</color>
+    <color name="Text_Big">#0B698F</color>
+    <color name="stroke_btn">#01A2E9</color>
 </resources>

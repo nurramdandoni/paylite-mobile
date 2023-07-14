@@ -19,7 +19,7 @@
 
         <ImageView
             android:id="@+id/image_logo"
-            android:layout_width="150dp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:src="@drawable/paylitelogo"
             android:layout_gravity="center_horizontal" />
@@ -28,20 +28,27 @@
             android:id="@+id/textview_example"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:text="Langkah mudah memulai semuanya"
+            android:layout_marginTop="30dp"
+            android:text="Join Paylite"
+            android:textColor="@color/Text_Big"
             style="@style/GreetingLogin"
             android:layout_gravity="center_horizontal" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login_google"
-            android:layout_width="260dp"
-            android:layout_height="55dp"
+            android:layout_width="295dp"
+            android:layout_height="60dp"
             android:layout_marginTop="0dp"
-            android:drawableLeft="@drawable/button_icon_google_login"
-            android:paddingStart="0dp"
-            android:text="Masuk dengan Google"
-            android:layout_gravity="center_horizontal" />
+            android:paddingStart="30dp"
+            android:paddingEnd="50dp"
+            android:textColor="@color/stroke_btn"
+            android:background="@drawable/button_icon_google_login_normal"
+            android:text="Login With Google"
+            android:textSize="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:drawableStart="@drawable/vector2"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
 
@@ -57,7 +64,7 @@
             android:id="@+id/textView_terms_privacy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dengan Masuk, Anda setuju dengan Syarat dan Ketentuan Layanan kami dan mengakui bahwa Kebijakan Privasi kami berlaku untuk Anda."
+            android:text="By signing up, you agree to our Terms of Service and acknowledge that our Privacy Policy applies to you"
             style="@style/tos"
             android:padding="8dp"
             android:textAlignment="center"
@@ -66,8 +73,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hak Cipta © 2023 Paylite"
-            style="@style/GreetingLogin"
+            android:text="Copyright © 2023 Paylite"
+            style="@style/tos"
             android:maxLines="3"
             android:layout_marginTop="10dp" />
 
