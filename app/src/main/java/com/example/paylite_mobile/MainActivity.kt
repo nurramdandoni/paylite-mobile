@@ -14,6 +14,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.paylite_mobile.helper.retrofit.ApiService
+import com.example.paylite_mobile.helper.retrofit.RetrofitHelper
 import com.example.paylite_mobile.helper.sharedPreference.Constant
 import com.example.paylite_mobile.helper.sharedPreference.PreferenceHelper
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -22,12 +25,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN = 123
     private lateinit var sharedpref: PreferenceHelper
+    private lateinit var api:ApiService
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         sharedpref = PreferenceHelper(this)
+        api = RetrofitHelper.getInstance().create(ApiService::class.java)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
@@ -116,6 +122,7 @@ class MainActivity : AppCompatActivity() {
             sharedpref.setString(Constant.PREF_EMAIL,email.toString())
             sharedpref.setString(Constant.PREF_NAME,fullName.toString())
             sharedpref.setString(Constant.PREF_PICTURE,profilePicture.toString())
+            callApiGlobal()
             Log.d("Data Account", "Email: $email")
             Log.d("Data Account", "Full Name: $fullName")
             Log.d("Data Account", "Profile Picture: $profilePicture")
@@ -141,6 +148,15 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Login gagal. Pastikan kembali akun email anda!.", Toast.LENGTH_SHORT).show()
             }
 
+        }
+    }
+
+    private fun callApiGlobal() {
+        lifecycleScope.launch{
+            val result = api.getApi()
+            if(result.isSuccessful){
+                Log.e("getApi test","res : "+result.body())
+            }
         }
     }
 
